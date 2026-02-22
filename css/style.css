@@ -646,11 +646,15 @@ img {
   .sonics-counter {
     position: static;
     transform: none;
-    margin: 3rem 0 0 1.5rem;
+    margin: 1.5rem 0 0 1.5rem;
     text-align: left;
   }
 
   .sonics-counter__title {
+    font-size: 0.7rem;
+  }
+
+  .globe-container__title {
     font-size: 0.7rem;
   }
 
@@ -674,7 +678,7 @@ img {
     position: static;
     width: 160px;
     height: 160px;
-    margin: 2.5rem 0 2rem 1.5rem;
+    margin: 1.5rem 0 0 1.5rem;
     opacity: 1;
     cursor: default;
   }
@@ -693,7 +697,7 @@ img {
 
   .misc-heading {
     position: static;
-    margin: 4.5rem 0 0 1.5rem;
+    margin: 3.5rem 0 0 1.5rem;
     max-width: 260px;
   }
 
@@ -754,11 +758,15 @@ img {
   }
 
   .sonics-counter {
-    margin-left: 1.2rem;
+    margin: 1.2rem 0 0 1.2rem;
   }
 
   .sonics-counter__title {
-    font-size: 0.6rem;
+    font-size: 0.65rem;
+  }
+
+  .globe-container__title {
+    font-size: 0.65rem;
   }
 
   .sonics-counter__boxes {
@@ -786,7 +794,7 @@ img {
   .globe-container {
     width: 120px;
     height: 120px;
-    margin-left: 1.2rem;
+    margin: 1.2rem 0 0 1.2rem;
   }
 
   .album-cover {
@@ -802,7 +810,7 @@ img {
   }
 
   .misc-heading {
-    margin-left: 1.2rem;
+    margin: 3rem 0 0 1.2rem;
     max-width: 220px;
   }
 
