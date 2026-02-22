@@ -331,7 +331,7 @@ img {
 
 .about__principles {
   position: fixed;
-  top: 66%;
+  top: 63%;
   left: 35%;
   transform: none;
   font-family: var(--mono);
