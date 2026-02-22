@@ -273,9 +273,9 @@ img {
 
 .sonics-counter {
   position: fixed;
-  top: 32%;
-  left: 35%;
-  transform: translate(-50%, -50%);
+  top: 48%;
+  left: 3rem;
+  transform: none;
   text-align: center;
   z-index: 10;
   cursor: grab;
@@ -331,9 +331,9 @@ img {
 
 .about__principles {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%);
+  top: 48%;
+  left: 22rem;
+  transform: none;
   font-family: var(--mono);
   font-size: 0.75rem;
   font-weight: 400;
@@ -362,10 +362,10 @@ img {
 /* --- Globe --- */
 .globe-container {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 120px;
-  height: 120px;
+  top: 38%;
+  right: 3rem;
+  width: 220px;
+  height: 220px;
   z-index: 10;
   pointer-events: auto;
   cursor: grab;
@@ -660,8 +660,8 @@ img {
 
   .globe-container {
     position: static;
-    width: 120px;
-    height: 120px;
+    width: 160px;
+    height: 160px;
     margin: 2.5rem auto 2rem;
     opacity: 1;
     cursor: default;
@@ -763,8 +763,8 @@ img {
   }
 
   .globe-container {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
   }
 
   .album-cover {
