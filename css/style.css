@@ -199,7 +199,7 @@ img {
 }
 
 .about__photo {
-  margin-top: 2rem;
+  margin-top: 3.5rem;
   display: flex;
   justify-content: flex-start;
 }
@@ -274,7 +274,7 @@ img {
 .sonics-counter {
   position: fixed;
   top: 6%;
-  left: 30%;
+  left: 26%;
   transform: none;
   text-align: center;
   z-index: 10;
@@ -331,8 +331,8 @@ img {
 
 .about__principles {
   position: fixed;
-  top: 42%;
-  left: 30%;
+  top: 6%;
+  left: 56%;
   transform: none;
   font-family: var(--mono);
   font-size: 0.75rem;
@@ -367,10 +367,10 @@ img {
 /* --- Globe --- */
 .globe-container {
   position: fixed;
-  top: 18%;
-  right: 5%;
-  width: 220px;
-  height: 220px;
+  top: 38%;
+  left: 30%;
+  width: 280px;
+  height: 280px;
   z-index: 10;
   pointer-events: auto;
   cursor: grab;
