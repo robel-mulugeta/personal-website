@@ -179,7 +179,7 @@ img {
 
 /* --- About Page --- */
 .about {
-  max-width: 320px;
+  max-width: 520px;
   margin: 0;
   padding: 2.5rem 3rem;
   min-height: 100vh;
@@ -263,7 +263,7 @@ img {
 }
 
 .about__signature {
-  margin-top: 1.5rem;
+  margin-top: 4rem;
   text-align: left;
   font-size: 1rem;
   opacity: 0.2;
@@ -331,7 +331,7 @@ img {
 
 .about__principles {
   position: fixed;
-  top: 63%;
+  top: 48%;
   left: 35%;
   transform: none;
   font-family: var(--mono);
@@ -367,8 +367,8 @@ img {
 /* --- Globe --- */
 .globe-container {
   position: fixed;
-  top: 22%;
-  left: 30%;
+  top: 30%;
+  left: 55%;
   width: 280px;
   height: 280px;
   z-index: 10;
@@ -384,6 +384,17 @@ img {
 
 .globe-container.visible {
   opacity: 1;
+}
+
+.globe-container__title {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--text);
+  opacity: 0.8;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.8rem;
+  text-align: center;
 }
 
 .globe-container canvas {

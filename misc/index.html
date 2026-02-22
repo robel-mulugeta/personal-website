@@ -24,5 +24,117 @@
     </div>
   </main>
 
+  <div class="globe-container" id="globe-container">
+    <p class="globe-container__title">Where the family went</p>
+    <canvas id="globe-canvas"></canvas>
+  </div>
+
+  <div class="sonics-counter" id="sonics-counter">
+    <p class="sonics-counter__title">Time passed since the Sonics left</p>
+    <div class="sonics-counter__boxes">
+      <div class="sonics-box"><span class="sonics-box__number" id="sc-years">0</span><span class="sonics-box__label">years</span></div>
+      <div class="sonics-box"><span class="sonics-box__number" id="sc-months">0</span><span class="sonics-box__label">months</span></div>
+      <div class="sonics-box"><span class="sonics-box__number" id="sc-days">0</span><span class="sonics-box__label">days</span></div>
+      <div class="sonics-box"><span class="sonics-box__number" id="sc-hours">0</span><span class="sonics-box__label">hours</span></div>
+      <div class="sonics-box"><span class="sonics-box__number" id="sc-minutes">0</span><span class="sonics-box__label">min</span></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3-array@3.2.4/dist/d3-array.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-geo@3.1.1/dist/d3-geo.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+  <script src="../js/globe.js"></script>
+
+  <script>
+    (function () {
+      var departure = new Date(2008, 6, 2);
+      var elYears = document.getElementById('sc-years');
+      var elMonths = document.getElementById('sc-months');
+      var elDays = document.getElementById('sc-days');
+      var elHours = document.getElementById('sc-hours');
+      var elMinutes = document.getElementById('sc-minutes');
+
+      function update() {
+        var now = new Date();
+        var years = now.getFullYear() - departure.getFullYear();
+        var months = now.getMonth() - departure.getMonth();
+        var days = now.getDate() - departure.getDate();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+
+        if (days < 0) {
+          months--;
+          var prev = new Date(now.getFullYear(), now.getMonth(), 0);
+          days += prev.getDate();
+        }
+        if (months < 0) {
+          years--;
+          months += 12;
+        }
+
+        elYears.textContent = years;
+        elMonths.textContent = months;
+        elDays.textContent = days;
+        elHours.textContent = hours;
+        elMinutes.textContent = minutes;
+      }
+
+      update();
+      setInterval(update, 1000);
+    })();
+
+    (function () {
+      function makeDraggable(el) {
+        var offsetX = 0, offsetY = 0;
+        var dragging = false;
+
+        function onDown(e) {
+          e.preventDefault();
+          dragging = true;
+          el.classList.add('dragging');
+          var rect = el.getBoundingClientRect();
+          var point = e.touches ? e.touches[0] : e;
+          offsetX = point.clientX - rect.left;
+          offsetY = point.clientY - rect.top;
+          el.style.top = rect.top + 'px';
+          el.style.left = rect.left + 'px';
+          el.style.bottom = 'auto';
+          el.style.right = 'auto';
+          el.style.transform = 'none';
+        }
+
+        function onMove(e) {
+          if (!dragging) return;
+          e.preventDefault();
+          var point = e.touches ? e.touches[0] : e;
+          var x = point.clientX - offsetX;
+          var y = point.clientY - offsetY;
+          x = Math.max(0, Math.min(x, window.innerWidth - el.offsetWidth));
+          y = Math.max(0, Math.min(y, window.innerHeight - el.offsetHeight));
+          el.style.left = x + 'px';
+          el.style.top = y + 'px';
+        }
+
+        function onUp() {
+          if (!dragging) return;
+          dragging = false;
+          el.classList.remove('dragging');
+        }
+
+        el.addEventListener('mousedown', onDown);
+        document.addEventListener('mousemove', onMove);
+        document.addEventListener('mouseup', onUp);
+        el.addEventListener('touchstart', onDown, { passive: false });
+        document.addEventListener('touchmove', onMove, { passive: false });
+        document.addEventListener('touchend', onUp);
+      }
+
+      var counter = document.getElementById('sonics-counter');
+      var globe = document.getElementById('globe-container');
+      if (counter) makeDraggable(counter);
+      if (globe) makeDraggable(globe);
+    })();
+  </script>
+
 </body>
 </html>
