@@ -57,6 +57,15 @@
 
   <div class="about__principles" id="typewriter"></div>
 
+  <div class="globe-container" id="globe-container">
+    <canvas id="globe-canvas"></canvas>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3-array@3.2.4/dist/d3-array.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-geo@3.1.1/dist/d3-geo.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+  <script src="../js/globe.js"></script>
+
   <script>
     document.getElementById('polaroid-flip').addEventListener('click', function () {
       this.querySelector('.polaroid-flipper').classList.toggle('flipped');

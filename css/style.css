@@ -273,8 +273,8 @@ img {
 
 .sonics-counter {
   position: fixed;
-  top: 40%;
-  left: 50%;
+  top: 35%;
+  left: 38%;
   transform: translate(-50%, -50%);
   text-align: center;
 }
@@ -326,8 +326,8 @@ img {
 
 .about__principles {
   position: fixed;
-  top: 60%;
-  left: 65%;
+  top: 55%;
+  left: 50%;
   transform: translateY(-50%);
   font-family: var(--mono);
   font-size: 0.75rem;
@@ -352,6 +352,28 @@ img {
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
+}
+
+/* --- Globe --- */
+.globe-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 280px;
+  height: 280px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.globe-container.visible {
+  opacity: 1;
+}
+
+.globe-container canvas {
+  width: 100%;
+  height: 100%;
 }
 
 /* --- Music Page --- */
@@ -626,6 +648,14 @@ img {
     text-align: left;
   }
 
+  .globe-container {
+    position: static;
+    width: 220px;
+    height: 220px;
+    margin: 2.5rem auto 2rem;
+    opacity: 1;
+  }
+
   .album-cover {
     width: 120px;
     height: 120px;
@@ -719,6 +749,11 @@ img {
   .about__principles {
     font-size: 0.65rem;
     margin-top: 2.5rem;
+  }
+
+  .globe-container {
+    width: 180px;
+    height: 180px;
   }
 
   .album-cover {
