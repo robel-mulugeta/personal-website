@@ -637,7 +637,7 @@ img {
   .music-heading,
   .collage-heading,
   .misc-heading {
-    top: 1.5rem;
+    top: 5.5rem;
     left: 1.5rem;
     max-width: 260px;
   }
@@ -732,7 +732,7 @@ img {
   .music-heading,
   .collage-heading,
   .misc-heading {
-    top: 1.2rem;
+    top: 5rem;
     left: 1.2rem;
     max-width: 220px;
   }
