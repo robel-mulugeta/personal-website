@@ -273,8 +273,8 @@ img {
 
 .sonics-counter {
   position: fixed;
-  top: 25%;
-  left: 26%;
+  top: 6%;
+  left: 30%;
   transform: none;
   text-align: center;
   z-index: 10;
@@ -331,8 +331,8 @@ img {
 
 .about__principles {
   position: fixed;
-  top: 47%;
-  left: 55%;
+  top: 42%;
+  left: 30%;
   transform: none;
   font-family: var(--mono);
   font-size: 0.75rem;
@@ -367,8 +367,8 @@ img {
 /* --- Globe --- */
 .globe-container {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  top: 18%;
+  right: 5%;
   width: 220px;
   height: 220px;
   z-index: 10;
