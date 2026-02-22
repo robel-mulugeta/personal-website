@@ -362,8 +362,8 @@ img {
 /* --- Globe --- */
 .globe-container {
   position: fixed;
-  top: 38%;
-  right: 3rem;
+  bottom: 2rem;
+  right: 2rem;
   width: 220px;
   height: 220px;
   z-index: 10;
