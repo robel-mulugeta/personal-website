@@ -133,10 +133,10 @@
     var cellW = vw / cols;
     var cellH = vh / rows;
 
-    var imgW = Math.round(cellW * 0.85);
-    var imgH = Math.round(cellH * 0.85);
-    if (imgW > 280) imgW = 280;
-    if (imgH > 260) imgH = 260;
+    var imgW = Math.round(cellW * 0.95);
+    var imgH = Math.round(cellH * 0.95);
+    if (imgW > 420) imgW = 420;
+    if (imgH > 380) imgH = 380;
 
     // Build cell positions and shuffle them
     var cells = [];
