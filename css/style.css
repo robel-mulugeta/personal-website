@@ -695,6 +695,10 @@ img {
     max-width: 260px;
   }
 
+  .misc-page {
+    min-height: auto;
+  }
+
   .misc-heading {
     position: static;
     margin: 3.5rem 0 0 1.5rem;
