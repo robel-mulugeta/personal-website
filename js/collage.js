@@ -65,6 +65,12 @@
     '/collage/IMG_0031.JPG': 'center 20%'
   };
 
+  // Images that should show fully (object-fit: contain) instead of cropping
+  var containImages = [
+    '/collage/Frankl.jpg',
+    '/collage/Prophet by kahlil g.jpg'
+  ];
+
   function shuffle(arr) {
     var a = arr.slice();
     for (var i = a.length - 1; i > 0; i--) {
@@ -240,6 +246,12 @@
           // Apply custom object-position if specified
           if (imagePositions[src]) {
             img.style.objectPosition = imagePositions[src];
+          }
+
+          // Show full image for book covers etc.
+          if (containImages.indexOf(src) !== -1) {
+            img.style.objectFit = 'contain';
+            el.style.backgroundColor = '#f5f5f0';
           }
 
           el.appendChild(img);
