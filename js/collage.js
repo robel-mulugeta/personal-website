@@ -3,52 +3,52 @@
 
   // Paired images that must stay adjacent
   var kokebPair = [
-    'collage/Kokeb menu page 1.png',
-    'collage/Kokeb menu page 2.png'
+    '/collage/Kokeb menu page 1.png',
+    '/collage/Kokeb menu page 2.png'
   ];
 
   // All other images
   var soloImages = [
-    'collage/eh3iwyov6lthyqxs6i9b.jpg',
-    'collage/4500.jpg.webp',
-    'collage/Yankees_Mariners_Baseball.jpg',
-    'collage/accdc66ac9497b3e81a301a0bdfeaced278bdfed.jpg',
-    'collage/19825fedwaySeahawk.jpg.webp',
-    'collage/caption.jpg',
-    'collage/images.jpg',
-    'collage/Albert-and-Little-Richard-press-page.jpg',
-    'collage/IMG_2639.jpg',
-    'collage/STARDUST.jpg',
-    'collage/IMG_2703.JPG',
-    'collage/IMG_2720.JPG',
-    'collage/IMG_2895.JPG',
-    'collage/IMG_0029.JPG',
-    'collage/IMG_0030.JPG',
-    'collage/IMG_0031.JPG',
-    'collage/IMG_0032.JPG',
-    'collage/IMG_0034.JPG',
-    'collage/IMG_0035.JPG',
-    'collage/1990.jpg',
-    'collage/On this Date.JPG',
-    'collage/IMG_0039.JPG',
-    'collage/IMG_0041.JPG',
-    'collage/Image.png',
-    'collage/Journey.jpeg',
-    'collage/Image.jpeg',
-    'collage/ali.jpeg',
-    'collage/abebe.jpeg',
-    'collage/jobs.jpeg',
-    'collage/bill nye.jpeg',
-    'collage/nelson.jpeg',
-    'collage/serena.jpeg',
-    'collage/0bbd8eedcca4aee36d7d2927cae56f1c1927a139.jpg',
-    'collage/1608242586-dilla-issue-17-jdoutside.jpg'
+    '/collage/eh3iwyov6lthyqxs6i9b.jpg',
+    '/collage/4500.jpg.webp',
+    '/collage/Yankees_Mariners_Baseball.jpg',
+    '/collage/accdc66ac9497b3e81a301a0bdfeaced278bdfed.jpg',
+    '/collage/19825fedwaySeahawk.jpg.webp',
+    '/collage/caption.jpg',
+    '/collage/images.jpg',
+    '/collage/Albert-and-Little-Richard-press-page.jpg',
+    '/collage/IMG_2639.jpg',
+    '/collage/STARDUST.jpg',
+    '/collage/IMG_2703.JPG',
+    '/collage/IMG_2720.JPG',
+    '/collage/IMG_2895.JPG',
+    '/collage/IMG_0029.JPG',
+    '/collage/IMG_0030.JPG',
+    '/collage/IMG_0031.JPG',
+    '/collage/IMG_0032.JPG',
+    '/collage/IMG_0034.JPG',
+    '/collage/IMG_0035.JPG',
+    '/collage/1990.jpg',
+    '/collage/On this Date.JPG',
+    '/collage/IMG_0039.JPG',
+    '/collage/IMG_0041.JPG',
+    '/collage/Image.png',
+    '/collage/Journey.jpeg',
+    '/collage/Image.jpeg',
+    '/collage/ali.jpeg',
+    '/collage/abebe.jpeg',
+    '/collage/jobs.jpeg',
+    '/collage/bill nye.jpeg',
+    '/collage/nelson.jpeg',
+    '/collage/serena.jpeg',
+    '/collage/0bbd8eedcca4aee36d7d2927cae56f1c1927a139.jpg',
+    '/collage/1608242586-dilla-issue-17-jdoutside.jpg'
   ];
 
   // Custom object-position for specific images
   var imagePositions = {
-    'collage/images.jpg': 'left center',
-    'collage/IMG_0031.JPG': 'center 20%'
+    '/collage/images.jpg': 'left center',
+    '/collage/IMG_0031.JPG': 'center 20%'
   };
 
   function shuffle(arr) {
