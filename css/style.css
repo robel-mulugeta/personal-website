@@ -703,7 +703,7 @@ img {
   .misc-heading {
     position: static;
     margin: 0 0 0 1.5rem;
-    max-width: 260px;
+    max-width: 80%;
   }
 
   .music-heading p,
@@ -820,7 +820,7 @@ img {
 
   .misc-heading {
     margin: 0 0 0 1.2rem;
-    max-width: 220px;
+    max-width: 80%;
   }
 
   .music-heading p,
