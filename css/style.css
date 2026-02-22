@@ -342,6 +342,11 @@ img {
   opacity: 0.8;
   white-space: pre;
   text-align: left;
+  z-index: 10;
+  cursor: grab;
+}
+.about__principles.dragging {
+  cursor: grabbing;
 }
 
 .about__principles .cursor {
