@@ -674,7 +674,7 @@ img {
     position: static;
     width: 160px;
     height: 160px;
-    margin: 2.5rem auto 2rem;
+    margin: 2.5rem 0 2rem 1.5rem;
     opacity: 1;
     cursor: default;
   }
@@ -685,10 +685,15 @@ img {
   }
 
   .music-heading,
-  .collage-heading,
-  .misc-heading {
+  .collage-heading {
     top: 5.5rem;
     left: 1.5rem;
+    max-width: 260px;
+  }
+
+  .misc-heading {
+    position: static;
+    margin: 4.5rem 0 0 1.5rem;
     max-width: 260px;
   }
 
@@ -748,6 +753,10 @@ img {
     flex: 0 1 180px;
   }
 
+  .sonics-counter {
+    margin-left: 1.2rem;
+  }
+
   .sonics-counter__title {
     font-size: 0.6rem;
   }
@@ -777,6 +786,7 @@ img {
   .globe-container {
     width: 120px;
     height: 120px;
+    margin-left: 1.2rem;
   }
 
   .album-cover {
@@ -785,10 +795,14 @@ img {
   }
 
   .music-heading,
-  .collage-heading,
-  .misc-heading {
+  .collage-heading {
     top: 5rem;
     left: 1.2rem;
+    max-width: 220px;
+  }
+
+  .misc-heading {
+    margin-left: 1.2rem;
     max-width: 220px;
   }
 
