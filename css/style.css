@@ -273,8 +273,8 @@ img {
 
 .sonics-counter {
   position: fixed;
-  top: 35%;
-  left: 38%;
+  top: 30%;
+  left: 55%;
   transform: translate(-50%, -50%);
   text-align: center;
 }
@@ -326,8 +326,8 @@ img {
 
 .about__principles {
   position: fixed;
-  top: 55%;
-  left: 50%;
+  top: 48%;
+  left: 55%;
   transform: translateY(-50%);
   font-family: var(--mono);
   font-size: 0.75rem;
@@ -358,9 +358,9 @@ img {
 .globe-container {
   position: fixed;
   bottom: 2rem;
-  right: 2rem;
-  width: 280px;
-  height: 280px;
+  left: 2rem;
+  width: 200px;
+  height: 200px;
   z-index: 1;
   pointer-events: none;
   opacity: 0;
@@ -650,8 +650,8 @@ img {
 
   .globe-container {
     position: static;
-    width: 220px;
-    height: 220px;
+    width: 180px;
+    height: 180px;
     margin: 2.5rem auto 2rem;
     opacity: 1;
   }
@@ -752,8 +752,8 @@ img {
   }
 
   .globe-container {
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
   }
 
   .album-cover {
