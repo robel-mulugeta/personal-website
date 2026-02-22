@@ -273,8 +273,8 @@ img {
 
 .sonics-counter {
   position: fixed;
-  top: 48%;
-  left: 3rem;
+  top: 25%;
+  left: 26%;
   transform: none;
   text-align: center;
   z-index: 10;
@@ -331,8 +331,8 @@ img {
 
 .about__principles {
   position: fixed;
-  top: 48%;
-  left: 22rem;
+  top: 47%;
+  left: 55%;
   transform: none;
   font-family: var(--mono);
   font-size: 0.75rem;
