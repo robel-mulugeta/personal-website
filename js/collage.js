@@ -48,7 +48,15 @@
     '/collage/jamal shake and bake.jpg',
     '/collage/jordan shot.webp',
     '/collage/kryptonate.webp',
-    '/collage/wales bonner.jpg'
+    '/collage/wales bonner.jpg',
+    '/collage/download.webp',
+    '/collage/eddie murphy.jpg',
+    '/collage/magnolia trees uw.jpeg',
+    '/collage/topboy sully.webp',
+    '/collage/MJ personally.jpg',
+    '/collage/urkel.webp',
+    '/collage/Frankl.jpg',
+    '/collage/Prophet by kahlil g.jpg'
   ];
 
   // Custom object-position for specific images
