@@ -199,7 +199,9 @@ img {
 }
 
 .about__photo {
-  margin-top: 3.5rem;
+  position: fixed;
+  top: 45%;
+  left: 3rem;
   display: flex;
   justify-content: flex-start;
 }
@@ -263,20 +265,22 @@ img {
 }
 
 .about__signature {
-  margin-top: 4rem;
+  position: fixed;
+  bottom: 3rem;
+  left: 3rem;
   text-align: left;
   font-size: 1rem;
-  opacity: 0.2;
+  opacity: 0.8;
   letter-spacing: 0.05em;
   line-height: 1.6;
 }
 
 .sonics-counter {
   position: fixed;
-  top: 2.5rem;
-  left: 30%;
+  top: 6rem;
+  left: 3rem;
   transform: none;
-  text-align: center;
+  text-align: left;
   z-index: 10;
   cursor: grab;
 }
@@ -288,9 +292,9 @@ img {
   font-family: var(--mono);
   font-size: 0.75rem;
   font-weight: 400;
+  line-height: 1.9;
   color: var(--text);
   opacity: 0.8;
-  letter-spacing: 0.02em;
   margin-bottom: 1.2rem;
 }
 
@@ -330,10 +334,7 @@ img {
 }
 
 .about__principles {
-  position: fixed;
-  top: 48%;
-  left: 35%;
-  transform: none;
+  margin-top: 2.5rem;
   font-family: var(--mono);
   font-size: 0.75rem;
   font-weight: 400;
@@ -342,11 +343,6 @@ img {
   opacity: 0.8;
   white-space: pre;
   text-align: left;
-  z-index: 10;
-  cursor: grab;
-}
-.about__principles.dragging {
-  cursor: grabbing;
 }
 
 .about__principles .cursor {
@@ -368,7 +364,7 @@ img {
 .globe-container {
   position: fixed;
   top: 30%;
-  left: 55%;
+  left: 3rem;
   width: 280px;
   height: 280px;
   z-index: 10;
@@ -390,11 +386,11 @@ img {
   font-family: var(--mono);
   font-size: 0.75rem;
   font-weight: 400;
+  line-height: 1.9;
   color: var(--text);
   opacity: 0.8;
-  letter-spacing: 0.02em;
   margin-bottom: 0.8rem;
-  text-align: center;
+  text-align: left;
 }
 
 .globe-container canvas {
