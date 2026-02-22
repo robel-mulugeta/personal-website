@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Robel Mulugeta</title>
+  <meta name="description" content="First-generation. Product, venture, and everything in between.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#127926;</text></svg>">
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="about.html" class="active">About</a>
+    <a href="collage.html">Collage</a>
+    <a href="music.html">Albums</a>
+    <a href="misc.html">Misc</a>
+  </nav>
+
+  <main class="about page-enter">
+    <div class="about__text">
+      <p>
+        Currently investing @ <a href="https://msc.vc/" target="_blank" style="color: #2e7d32;">msc</a>. Care deeply about product and design. Music nerd. Bring back our Sonics.
+      </p>
+    </div>
+
+    <div class="about__photo">
+      <div class="polaroid-container" id="polaroid-flip">
+        <div class="polaroid-flipper">
+          <div class="polaroid-front polaroid">
+            <img src="images/IMG_8715.jpg" alt="Childhood photograph">
+          </div>
+          <div class="polaroid-back">
+            <p class="polaroid-back-text">Brick by Brick</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about__signature">
+      ሮቤል ሙሉጌታ
+    </div>
+
+  </main>
+
+  <div class="sonics-counter" id="sonics-counter">
+    <p class="sonics-counter__title">Time passed since the Sonics left</p>
+    <div class="sonics-counter__boxes">
+      <div class="sonics-box"><span class="sonics-box__number" id="sc-years">0</span><span class="sonics-box__label">years</span></div>
+      <div class="sonics-box"><span class="sonics-box__number" id="sc-months">0</span><span class="sonics-box__label">months</span></div>
+      <div class="sonics-box"><span class="sonics-box__number" id="sc-days">0</span><span class="sonics-box__label">days</span></div>
+      <div class="sonics-box"><span class="sonics-box__number" id="sc-hours">0</span><span class="sonics-box__label">hours</span></div>
+      <div class="sonics-box"><span class="sonics-box__number" id="sc-minutes">0</span><span class="sonics-box__label">min</span></div>
+    </div>
+  </div>
+
+  <div class="about__principles" id="typewriter"></div>
+
+  <script>
+    document.getElementById('polaroid-flip').addEventListener('click', function () {
+      this.querySelector('.polaroid-flipper').classList.toggle('flipped');
+    });
+
+    (function () {
+      var el = document.getElementById('typewriter');
+      var cursor = document.createElement('span');
+      cursor.className = 'cursor';
+      el.appendChild(cursor);
+
+      // Build the sequence of actions
+      // Each action is either { type: 'char' } or { type: 'delete', count: n } or { type: 'pause', ms: n }
+      var actions = [];
+      var text = 'Always trying to be:\n\n* Kind\n* Honest\n* Curiuous';
+
+      // Type up to the typo
+      for (var i = 0; i < text.length; i++) {
+        actions.push({ type: 'char', char: text[i] });
+      }
+
+      // Pause after the typo
+      actions.push({ type: 'pause', ms: 400 });
+
+      // Backspace 'uous' (4 characters)
+      for (var d = 0; d < 4; d++) {
+        actions.push({ type: 'delete' });
+      }
+
+      // Small pause before correction
+      actions.push({ type: 'pause', ms: 200 });
+
+      // Type correction + rest
+      var correction = 'ous\n* Grateful';
+      for (var c = 0; c < correction.length; c++) {
+        actions.push({ type: 'char', char: correction[c] });
+      }
+
+      var content = '';
+      var idx = 0;
+      var baseTypeSpeed = 70;
+      var deleteSpeed = 50;
+
+      function tick() {
+        if (idx >= actions.length) return;
+
+        var action = actions[idx];
+        idx++;
+
+        if (action.type === 'char') {
+          content += action.char;
+          el.textContent = content;
+          el.appendChild(cursor);
+          var speed = baseTypeSpeed + Math.random() * 40;
+          // Slow down slightly after newlines
+          if (action.char === '\n') speed += 100;
+          setTimeout(tick, speed);
+        } else if (action.type === 'delete') {
+          content = content.slice(0, -1);
+          el.textContent = content;
+          el.appendChild(cursor);
+          setTimeout(tick, deleteSpeed);
+        } else if (action.type === 'pause') {
+          setTimeout(tick, action.ms);
+        }
+      }
+
+      // Start after a brief delay
+      setTimeout(tick, 800);
+    })();
+
+    (function () {
+      // July 2, 2008 — the day the NBA approved the Sonics' relocation
+      var departure = new Date(2008, 6, 2);
+      var elYears = document.getElementById('sc-years');
+      var elMonths = document.getElementById('sc-months');
+      var elDays = document.getElementById('sc-days');
+      var elHours = document.getElementById('sc-hours');
+      var elMinutes = document.getElementById('sc-minutes');
+
+      function update() {
+        var now = new Date();
+
+        var years = now.getFullYear() - departure.getFullYear();
+        var months = now.getMonth() - departure.getMonth();
+        var days = now.getDate() - departure.getDate();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+
+        if (days < 0) {
+          months--;
+          var prev = new Date(now.getFullYear(), now.getMonth(), 0);
+          days += prev.getDate();
+        }
+        if (months < 0) {
+          years--;
+          months += 12;
+        }
+
+        elYears.textContent = years;
+        elMonths.textContent = months;
+        elDays.textContent = days;
+        elHours.textContent = hours;
+        elMinutes.textContent = minutes;
+      }
+
+      update();
+      setInterval(update, 1000);
+    })();
+  </script>
+
+</body>
+</html>
