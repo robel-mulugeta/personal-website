@@ -277,6 +277,11 @@ img {
   left: 55%;
   transform: translate(-50%, -50%);
   text-align: center;
+  z-index: 10;
+  cursor: grab;
+}
+.sonics-counter.dragging {
+  cursor: grabbing;
 }
 
 .sonics-counter__title {
@@ -359,12 +364,17 @@ img {
   position: fixed;
   bottom: 2rem;
   left: 2rem;
-  width: 200px;
-  height: 200px;
-  z-index: 1;
-  pointer-events: none;
+  width: 120px;
+  height: 120px;
+  z-index: 10;
+  pointer-events: auto;
+  cursor: grab;
   opacity: 0;
   transition: opacity 1.2s ease;
+}
+.globe-container.dragging {
+  cursor: grabbing;
+  transition: none;
 }
 
 .globe-container.visible {
@@ -650,10 +660,11 @@ img {
 
   .globe-container {
     position: static;
-    width: 180px;
-    height: 180px;
+    width: 120px;
+    height: 120px;
     margin: 2.5rem auto 2rem;
     opacity: 1;
+    cursor: default;
   }
 
   .album-cover {
@@ -752,8 +763,8 @@ img {
   }
 
   .globe-container {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
   }
 
   .album-cover {
