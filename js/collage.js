@@ -42,7 +42,13 @@
     '/collage/nelson.jpeg',
     '/collage/serena.jpeg',
     '/collage/0bbd8eedcca4aee36d7d2927cae56f1c1927a139.jpg',
-    '/collage/1608242586-dilla-issue-17-jdoutside.jpg'
+    '/collage/1608242586-dilla-issue-17-jdoutside.jpg',
+    '/collage/JFG.avif',
+    '/collage/Salehe.avif',
+    '/collage/jamal shake and bake.jpg',
+    '/collage/jordan shot.webp',
+    '/collage/kryptonate.webp',
+    '/collage/wales bonner.jpg'
   ];
 
   // Custom object-position for specific images
