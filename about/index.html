@@ -60,7 +60,7 @@
       // Build the sequence of actions
       // Each action is either { type: 'char' } or { type: 'delete', count: n } or { type: 'pause', ms: n }
       var actions = [];
-      var text = 'Always trying to be:\n\n* Kind\n* Honest\n* Curiuous';
+      var text = 'Always trying to be:\n\n* kind\n* honest\n* curiuous';
 
       // Type up to the typo
       for (var i = 0; i < text.length; i++) {
@@ -79,7 +79,7 @@
       actions.push({ type: 'pause', ms: 200 });
 
       // Type correction + rest
-      var correction = 'ous\n* Grateful';
+      var correction = 'ous\n* grateful';
       for (var c = 0; c < correction.length; c++) {
         actions.push({ type: 'char', char: correction[c] });
       }
