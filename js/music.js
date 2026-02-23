@@ -158,6 +158,14 @@
       art: 'https://is1-ssl.mzstatic.com/image/thumb/Music71/v4/8d/ca/de/8dcadedf-3d9d-70b1-3012-e809502bb7b6/5060384611662.jpg/600x600bb.jpg' },
     { title: 'Grey Area', artist: 'Little Simz',
       art: null },
+    { title: 'Zombie', artist: 'Fela Kuti',
+      art: null },
+    { title: 'Expensive Shit', artist: 'Fela Kuti',
+      art: null },
+    { title: 'Gentleman', artist: 'Fela Kuti',
+      art: null },
+    { title: 'Water No Get Enemy', artist: 'Fela Kuti',
+      art: null },
   ];
 
   // --- Fetch album art from iTunes Search API (fallback for albums without hardcoded art) ---

@@ -55,11 +55,9 @@
     '/collage/topboy sully.webp',
     '/collage/MJ personally.jpg',
     '/collage/urkel.webp',
-    '/collage/Frankl.jpg',
     '/collage/Prophet by kahlil g.jpg',
     '/collage/19825fedwaySeahawk.jpg.jpg',
     '/collage/2004_Oprah-Winfrey.webp',
-    '/collage/marcus aurelius.jpg',
     '/collage/soyinka.jpg',
     '/collage/usain.jpg'
   ];
@@ -72,7 +70,6 @@
 
   // Images that should show fully (object-fit: contain) instead of cropping
   var containImages = [
-    '/collage/Frankl.jpg',
     '/collage/Prophet by kahlil g.jpg'
   ];
 
