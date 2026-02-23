@@ -56,7 +56,12 @@
     '/collage/MJ personally.jpg',
     '/collage/urkel.webp',
     '/collage/Frankl.jpg',
-    '/collage/Prophet by kahlil g.jpg'
+    '/collage/Prophet by kahlil g.jpg',
+    '/collage/19825fedwaySeahawk.jpg.jpg',
+    '/collage/2004_Oprah-Winfrey.webp',
+    '/collage/marcus aurelius.jpg',
+    '/collage/soyinka.jpg',
+    '/collage/usain.jpg'
   ];
 
   // Custom object-position for specific images
@@ -248,10 +253,9 @@
             img.style.objectPosition = imagePositions[src];
           }
 
-          // Show full image for book covers etc.
+          // Zoom in on book covers so they fill their square without white space
           if (containImages.indexOf(src) !== -1) {
-            img.style.objectFit = 'contain';
-            el.style.backgroundColor = '#f5f5f0';
+            img.style.objectFit = 'cover';
           }
 
           el.appendChild(img);
