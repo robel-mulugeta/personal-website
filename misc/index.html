@@ -102,11 +102,14 @@
           var point = e.touches ? e.touches[0] : e;
           offsetX = point.clientX - rect.left;
           offsetY = point.clientY - rect.top;
+          el.style.position = 'fixed';
           el.style.top = rect.top + 'px';
           el.style.left = rect.left + 'px';
           el.style.bottom = 'auto';
           el.style.right = 'auto';
+          el.style.margin = '0';
           el.style.transform = 'none';
+          el.style.zIndex = '100';
         }
 
         function onMove(e) {
