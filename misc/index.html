@@ -22,23 +22,29 @@
     <div class="misc-heading">
       <p>More to come. Projects. Writing. Etc.</p>
     </div>
-  </main>
-
-  <div class="sonics-counter" id="sonics-counter">
-    <p class="sonics-counter__title">Time passed since the Sonics left</p>
-    <div class="sonics-counter__boxes">
-      <div class="sonics-box"><span class="sonics-box__number" id="sc-years">0</span><span class="sonics-box__label">years</span></div>
-      <div class="sonics-box"><span class="sonics-box__number" id="sc-months">0</span><span class="sonics-box__label">months</span></div>
-      <div class="sonics-box"><span class="sonics-box__number" id="sc-days">0</span><span class="sonics-box__label">days</span></div>
-      <div class="sonics-box"><span class="sonics-box__number" id="sc-hours">0</span><span class="sonics-box__label">hours</span></div>
-      <div class="sonics-box"><span class="sonics-box__number" id="sc-minutes">0</span><span class="sonics-box__label">min</span></div>
+    <div class="sonics-counter" id="sonics-counter">
+      <p class="sonics-counter__title">Time passed since the Sonics left</p>
+      <div class="sonics-counter__boxes">
+        <div class="sonics-box"><span class="sonics-box__number" id="sc-years">0</span><span class="sonics-box__label">years</span></div>
+        <div class="sonics-box"><span class="sonics-box__number" id="sc-months">0</span><span class="sonics-box__label">months</span></div>
+        <div class="sonics-box"><span class="sonics-box__number" id="sc-days">0</span><span class="sonics-box__label">days</span></div>
+        <div class="sonics-box"><span class="sonics-box__number" id="sc-hours">0</span><span class="sonics-box__label">hours</span></div>
+        <div class="sonics-box"><span class="sonics-box__number" id="sc-minutes">0</span><span class="sonics-box__label">min</span></div>
+      </div>
     </div>
-  </div>
 
-  <div class="globe-container" id="globe-container">
-    <p class="globe-container__title">Where the family went</p>
-    <canvas id="globe-canvas"></canvas>
-  </div>
+    <div class="globe-container" id="globe-container">
+      <p class="globe-container__title">Where the family went</p>
+      <canvas id="globe-canvas"></canvas>
+    </div>
+
+    <div class="misc-video" id="misc-video">
+      <p class="misc-video__title">Mi Lucha</p>
+      <video autoplay loop muted playsinline>
+        <source src="tu-lucha.mp4" type="video/mp4">
+      </video>
+    </div>
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/d3-array@3.2.4/dist/d3-array.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/d3-geo@3.1.1/dist/d3-geo.min.js"></script>
@@ -131,8 +137,10 @@
 
       var counter = document.getElementById('sonics-counter');
       var globe = document.getElementById('globe-container');
+      var video = document.getElementById('misc-video');
       if (counter) makeDraggable(counter);
       if (globe) makeDraggable(globe);
+      if (video) makeDraggable(video);
     })();
   </script>
 

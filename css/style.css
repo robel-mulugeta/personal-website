@@ -276,12 +276,8 @@ img {
 }
 
 .sonics-counter {
-  position: fixed;
-  top: 6rem;
-  left: 3rem;
-  transform: none;
+  margin-top: 2rem;
   text-align: left;
-  z-index: 10;
   cursor: grab;
 }
 .sonics-counter.dragging {
@@ -362,12 +358,9 @@ img {
 
 /* --- Globe --- */
 .globe-container {
-  position: fixed;
-  top: 30%;
-  left: 3rem;
+  margin-top: 2rem;
   width: 280px;
   height: 280px;
-  z-index: 10;
   pointer-events: auto;
   cursor: grab;
   opacity: 0;
@@ -572,12 +565,11 @@ img {
   width: 100%;
   min-height: 100vh;
   position: relative;
+  padding-top: 2.5rem;
+  padding-left: 3rem;
 }
 
 .misc-heading {
-  position: fixed;
-  top: 2.5rem;
-  left: 3rem;
   max-width: 320px;
   text-align: left;
 }
@@ -589,6 +581,32 @@ img {
   line-height: 1.9;
   color: var(--text);
   opacity: 0.8;
+}
+
+.misc-video {
+  margin-top: 8rem;
+  max-width: 160px;
+  cursor: grab;
+}
+
+.misc-video.dragging {
+  cursor: grabbing;
+}
+
+.misc-video__title {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.9;
+  color: var(--text);
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+.misc-video video {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
 }
 
 /* --- Page Transitions --- */
@@ -643,13 +661,6 @@ img {
     min-height: auto;
   }
 
-  .sonics-counter {
-    position: static;
-    transform: none;
-    margin: 0.8rem 0 0 1.5rem;
-    text-align: left;
-  }
-
   .sonics-counter__title {
     font-size: 0.7rem;
   }
@@ -675,10 +686,8 @@ img {
   }
 
   .globe-container {
-    position: static;
     width: 160px;
     height: 160px;
-    margin: 0.8rem 0 0 1.5rem;
     opacity: 1;
     cursor: default;
   }
@@ -698,12 +707,15 @@ img {
   .misc-page {
     min-height: auto;
     padding-top: 3.5rem;
+    padding-left: 1.5rem;
   }
 
   .misc-heading {
-    position: static;
-    margin: 0 0 0 1.5rem;
     max-width: 80%;
+  }
+
+  .misc-video {
+    max-width: 120px;
   }
 
   .music-heading p,
@@ -762,10 +774,6 @@ img {
     flex: 0 1 180px;
   }
 
-  .sonics-counter {
-    margin: 0.6rem 0 0 1.2rem;
-  }
-
   .sonics-counter__title {
     font-size: 0.65rem;
   }
@@ -799,7 +807,6 @@ img {
   .globe-container {
     width: 120px;
     height: 120px;
-    margin: 0.6rem 0 0 1.2rem;
   }
 
   .album-cover {
@@ -816,11 +823,15 @@ img {
 
   .misc-page {
     padding-top: 3rem;
+    padding-left: 1.2rem;
   }
 
   .misc-heading {
-    margin: 0 0 0 1.2rem;
     max-width: 80%;
+  }
+
+  .misc-video {
+    max-width: 100px;
   }
 
   .music-heading p,
