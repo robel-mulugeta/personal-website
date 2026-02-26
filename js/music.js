@@ -184,6 +184,16 @@
       art: 'https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/ac/04/1a/ac041a3a-ac40-3820-01f0-982615c30c37/dj.fnoymdtg.jpg/600x600bb.jpg' },
     { title: 'Cosmogramma', artist: 'Flying Lotus',
       art: 'https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/f8/3f/5f/f83f5f67-f8d6-626a-ae9a-3f16c5b0af5d/0801061019532.png/600x600bb.jpg' },
+    { title: 'From the Westside with Love II', artist: 'Dom Kennedy',
+      art: null },
+    { title: 'From the Westside With Love Three', artist: 'Dom Kennedy',
+      art: 'https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/59/23/3c/59233cd3-17e2-f3f1-0493-2c380c99be70/859751256057_cover.jpg/600x600bb.jpg' },
+    { title: 'Yellow Album', artist: 'Dom Kennedy',
+      art: null },
+    { title: 'Get Home Safely', artist: 'Dom Kennedy',
+      art: null },
+    { title: 'Los Angeles Is Not for Sale, Vol. 1', artist: 'Dom Kennedy',
+      art: 'https://is1-ssl.mzstatic.com/image/thumb/Music111/v4/b4/16/c2/b416c21d-307f-22b5-2ede-3fb0156241a9/859719071364_cover.jpg/600x600bb.jpg' },
   ];
 
   // --- Fetch album art from iTunes Search API (fallback for albums without hardcoded art) ---
