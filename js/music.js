@@ -194,6 +194,16 @@
       art: null },
     { title: 'Los Angeles Is Not for Sale, Vol. 1', artist: 'Dom Kennedy',
       art: 'https://is1-ssl.mzstatic.com/image/thumb/Music111/v4/b4/16/c2/b416c21d-307f-22b5-2ede-3fb0156241a9/859719071364_cover.jpg/600x600bb.jpg' },
+    { title: 'Doris', artist: 'Earl Sweatshirt',
+      art: null },
+    { title: 'I Don\'t Like Shit, I Don\'t Go Outside', artist: 'Earl Sweatshirt',
+      art: null },
+    { title: 'Some Rap Songs', artist: 'Earl Sweatshirt',
+      art: null },
+    { title: 'SICK!', artist: 'Earl Sweatshirt',
+      art: 'https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/90/32/c1/9032c1b4-65d7-9a7a-5b39-b986260dd52d/093624875758.jpg/600x600bb.jpg' },
+    { title: 'Feet of Clay', artist: 'Earl Sweatshirt',
+      art: 'https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/45/ff/ec/45ffec77-8b08-3c48-6e99-682b70b72c16/093624894896.jpg/600x600bb.jpg' },
   ];
 
   // --- Fetch album art from iTunes Search API (fallback for albums without hardcoded art) ---
