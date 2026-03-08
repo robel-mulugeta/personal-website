@@ -278,10 +278,6 @@ img {
 .sonics-counter {
   margin-top: 2rem;
   text-align: left;
-  cursor: grab;
-}
-.sonics-counter.dragging {
-  cursor: grabbing;
 }
 
 .sonics-counter__title {
@@ -362,13 +358,8 @@ img {
   width: 280px;
   height: 280px;
   pointer-events: auto;
-  cursor: grab;
   opacity: 0;
   transition: opacity 1.2s ease;
-}
-.globe-container.dragging {
-  cursor: grabbing;
-  transition: none;
 }
 
 .globe-container.visible {
@@ -586,11 +577,6 @@ img {
 .misc-video {
   margin-top: 8rem;
   max-width: 160px;
-  cursor: grab;
-}
-
-.misc-video.dragging {
-  cursor: grabbing;
 }
 
 .misc-video__title {
