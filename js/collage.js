@@ -59,15 +59,15 @@
   ];
 
   // Width options for floating photos — height determined by natural aspect ratio
-  var widths = [220, 260, 300, 340, 380, 420];
+  var widths = [180, 210, 240, 270, 300, 340];
 
   var canvas = document.getElementById('collage-canvas');
   var triggered = false;
   var photos = []; // active floating photo objects
   var pool = [];   // shuffled queue of image srcs
   var poolIndex = 0;
-  var MAX_PHOTOS = 10;
-  var SPAWN_INTERVAL = 1800;
+  var MAX_PHOTOS = 14;
+  var SPAWN_INTERVAL = 1400;
 
   // Mouse influence on drift direction
   var mouseX = 0.5; // normalized 0-1, 0.5 = center
@@ -99,17 +99,25 @@
   }
 
   function pickEdgeSpawn(w, h) {
-    // Spawn only from left or right edges
+    // Spawn from any edge
     var vw = window.innerWidth;
     var vh = window.innerHeight;
+    var edge = Math.floor(Math.random() * 4);
     var x, y;
 
-    if (Math.random() < 0.5) {
+    if (edge === 0) {        // top
+      x = Math.random() * (vw - w);
+      y = -h - 20;
+    } else if (edge === 1) { // bottom
+      x = Math.random() * (vw - w);
+      y = vh + 20;
+    } else if (edge === 2) { // left
       x = -w - 20;
-    } else {
+      y = Math.random() * (vh - h);
+    } else {                 // right
       x = vw + 20;
+      y = Math.random() * (vh - h);
     }
-    y = Math.random() * (vh - h);
 
     return { x: x, y: y };
   }
@@ -193,8 +201,10 @@
 
   function isOffScreen(p) {
     var vw = window.innerWidth;
+    var vh = window.innerHeight;
     var margin = 80;
-    return p.x < -p.w - margin || p.x > vw + margin;
+    return p.x < -p.w - margin || p.x > vw + margin ||
+           p.y < -p.h - margin || p.y > vh + margin;
   }
 
   function updatePhotos() {
@@ -213,15 +223,6 @@
 
       p.x += p.dx;
       p.y += p.dy;
-
-      // Bounce off top and bottom edges
-      if (p.y <= 0) {
-        p.y = 0;
-        p.dy = Math.abs(p.dy);
-      } else if (p.y + p.h >= vh) {
-        p.y = vh - p.h;
-        p.dy = -Math.abs(p.dy);
-      }
 
       // Phase management
       if (p.phase === 'entering') {
@@ -270,7 +271,7 @@
 
   function startSpawning() {
     // Initial batch: stagger a few photos
-    var initialCount = 8 + Math.floor(Math.random() * 3); // 8-10
+    var initialCount = 10 + Math.floor(Math.random() * 3); // 10-12
     for (var i = 0; i < initialCount; i++) {
       (function (delay) {
         setTimeout(spawnPhoto, delay);
