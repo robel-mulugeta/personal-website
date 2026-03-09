@@ -58,22 +58,8 @@
     '/collage/detroit street art.jpeg'
   ];
 
-  var imagePositions = {
-    '/collage/images.jpg': 'left center',
-    '/collage/IMG_0031.JPG': 'center 20%'
-  };
-
-  // Possible sizes for floating photos — varied like Public Records
-  var sizes = [
-    { w: 240, h: 320 },
-    { w: 340, h: 240 },
-    { w: 280, h: 380 },
-    { w: 380, h: 280 },
-    { w: 220, h: 280 },
-    { w: 360, h: 260 },
-    { w: 260, h: 360 },
-    { w: 420, h: 300 }
-  ];
+  // Width options for floating photos — height determined by natural aspect ratio
+  var widths = [220, 260, 300, 340, 380, 420];
 
   var canvas = document.getElementById('collage-canvas');
   var triggered = false;
@@ -108,8 +94,8 @@
     return pool[poolIndex++];
   }
 
-  function pickSize() {
-    return sizes[Math.floor(Math.random() * sizes.length)];
+  function pickWidth() {
+    return widths[Math.floor(Math.random() * widths.length)];
   }
 
   function pickEdgeSpawn(w, h) {
@@ -168,44 +154,54 @@
 
   function spawnPhoto() {
     var src = nextImage();
-    var size = pickSize();
-    var spawn = pickEdgeSpawn(size.w, size.h);
+    var w = pickWidth();
     var drift = getDrift();
     var rotation = (Math.random() * 10 - 5).toFixed(1);
 
-    var el = document.createElement('div');
-    el.className = 'collage-item';
-    el.style.width = size.w + 'px';
-    el.style.height = size.h + 'px';
-    el.style.left = spawn.x + 'px';
-    el.style.top = spawn.y + 'px';
-    el.style.setProperty('--rotation', 'rotate(' + rotation + 'deg)');
-
-    var img = document.createElement('img');
+    // Preload image to get natural dimensions
+    var img = new Image();
     img.src = src;
     img.alt = '';
-    if (imagePositions[src]) {
-      img.style.objectPosition = imagePositions[src];
+
+    function create(naturalW, naturalH) {
+      var aspect = naturalH / naturalW;
+      var h = Math.round(w * aspect);
+
+      var spawn = pickEdgeSpawn(w, h);
+
+      var el = document.createElement('div');
+      el.className = 'collage-item';
+      el.style.width = w + 'px';
+      el.style.left = spawn.x + 'px';
+      el.style.top = spawn.y + 'px';
+      el.style.setProperty('--rotation', 'rotate(' + rotation + 'deg)');
+
+      el.appendChild(img);
+      canvas.appendChild(el);
+
+      var photo = {
+        el: el,
+        x: spawn.x,
+        y: spawn.y,
+        w: w,
+        h: h,
+        dx: drift.dx,
+        dy: drift.dy,
+        opacity: 0,
+        phase: 'entering',
+        life: 0
+      };
+
+      photos.push(photo);
     }
 
-    el.appendChild(img);
-    canvas.appendChild(el);
-
-    var photo = {
-      el: el,
-      x: spawn.x,
-      y: spawn.y,
-      w: size.w,
-      h: size.h,
-      dx: drift.dx,
-      dy: drift.dy,
-      opacity: 0,
-      phase: 'entering', // entering, visible, exiting
-      life: 0
-    };
-
-    photos.push(photo);
-    return photo;
+    if (img.naturalWidth) {
+      create(img.naturalWidth, img.naturalHeight);
+    } else {
+      img.onload = function () {
+        create(img.naturalWidth, img.naturalHeight);
+      };
+    }
   }
 
   function isOffScreen(p) {
