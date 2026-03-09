@@ -65,14 +65,14 @@
 
   // Possible sizes for floating photos — varied like Public Records
   var sizes = [
-    { w: 180, h: 240 },
-    { w: 260, h: 180 },
-    { w: 220, h: 300 },
-    { w: 300, h: 220 },
-    { w: 160, h: 200 },
-    { w: 280, h: 200 },
-    { w: 200, h: 280 },
-    { w: 340, h: 240 }
+    { w: 240, h: 320 },
+    { w: 340, h: 240 },
+    { w: 280, h: 380 },
+    { w: 380, h: 280 },
+    { w: 220, h: 280 },
+    { w: 360, h: 260 },
+    { w: 260, h: 360 },
+    { w: 420, h: 300 }
   ];
 
   var canvas = document.getElementById('collage-canvas');
@@ -80,8 +80,8 @@
   var photos = []; // active floating photo objects
   var pool = [];   // shuffled queue of image srcs
   var poolIndex = 0;
-  var MAX_PHOTOS = 7;
-  var SPAWN_INTERVAL = 2400;
+  var MAX_PHOTOS = 10;
+  var SPAWN_INTERVAL = 1800;
 
   // Mouse influence on drift direction
   var mouseX = 0.5; // normalized 0-1, 0.5 = center
@@ -159,7 +159,7 @@
       dy = (Math.random() - 0.5) * 2;
       mag = Math.sqrt(dx * dx + dy * dy);
     }
-    var speed = 0.4 + Math.random() * 0.3;
+    var speed = 0.8 + Math.random() * 0.4;
     dx = (dx / mag) * speed;
     dy = (dy / mag) * speed;
 
@@ -280,7 +280,7 @@
 
   function startSpawning() {
     // Initial batch: stagger a few photos
-    var initialCount = 5 + Math.floor(Math.random() * 3); // 5-7
+    var initialCount = 8 + Math.floor(Math.random() * 3); // 8-10
     for (var i = 0; i < initialCount; i++) {
       (function (delay) {
         setTimeout(spawnPhoto, delay);
