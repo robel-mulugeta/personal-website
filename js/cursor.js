@@ -51,7 +51,6 @@
       dot.style.backgroundColor = currentColor;
       dot.style.width = '18px';
       dot.style.height = '18px';
-      dot.style.mixBlendMode = 'normal';
     }
   });
 
@@ -59,10 +58,9 @@
     var target = e.target;
     if (isPhotoElement(target)) {
       hovered = false;
-      dot.style.backgroundColor = 'var(--text)';
+      dot.style.backgroundColor = '#000000';
       dot.style.width = '10px';
       dot.style.height = '10px';
-      dot.style.mixBlendMode = 'difference';
     }
   });
 

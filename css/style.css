@@ -35,17 +35,21 @@ html {
   left: -5px;
   width: 10px;
   height: 10px;
-  background-color: var(--text);
+  background-color: #000000;
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
-  mix-blend-mode: difference;
-  transition: width 0.25s ease, height 0.25s ease, background-color 0.3s ease, mix-blend-mode 0.3s ease;
+  transition: width 0.25s ease, height 0.25s ease, background-color 0.3s ease;
   will-change: transform;
+}
+
+a, button, [role="button"] {
+  cursor: none;
 }
 
 @media (pointer: coarse) {
   html { cursor: auto; }
+  a, button, [role="button"] { cursor: auto; }
   .custom-cursor { display: none; }
 }
 
@@ -682,7 +686,7 @@ img {
     width: 160px;
     height: 160px;
     opacity: 1;
-    cursor: default;
+    cursor: none;
   }
 
   .album-cover {
