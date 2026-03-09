@@ -99,30 +99,17 @@
   }
 
   function pickEdgeSpawn(w, h) {
-    // Spawn from a random edge, biased by cursor position
-    // Cursor right => photos come from left, etc.
+    // Spawn only from left or right edges
     var vw = window.innerWidth;
     var vh = window.innerHeight;
-    var edge = Math.random();
     var x, y;
 
-    if (edge < 0.25) {
-      // left edge
+    if (Math.random() < 0.5) {
       x = -w - 20;
-      y = Math.random() * (vh - h);
-    } else if (edge < 0.5) {
-      // right edge
-      x = vw + 20;
-      y = Math.random() * (vh - h);
-    } else if (edge < 0.75) {
-      // top edge
-      x = Math.random() * (vw - w);
-      y = -h - 20;
     } else {
-      // bottom edge
-      x = Math.random() * (vw - w);
-      y = vh + 20;
+      x = vw + 20;
     }
+    y = Math.random() * (vh - h);
 
     return { x: x, y: y };
   }
@@ -206,10 +193,8 @@
 
   function isOffScreen(p) {
     var vw = window.innerWidth;
-    var vh = window.innerHeight;
     var margin = 80;
-    return p.x < -p.w - margin || p.x > vw + margin ||
-           p.y < -p.h - margin || p.y > vh + margin;
+    return p.x < -p.w - margin || p.x > vw + margin;
   }
 
   function updatePhotos() {
@@ -228,6 +213,15 @@
 
       p.x += p.dx;
       p.y += p.dy;
+
+      // Bounce off top and bottom edges
+      if (p.y <= 0) {
+        p.y = 0;
+        p.dy = Math.abs(p.dy);
+      } else if (p.y + p.h >= vh) {
+        p.y = vh - p.h;
+        p.dy = -Math.abs(p.dy);
+      }
 
       // Phase management
       if (p.phase === 'entering') {
