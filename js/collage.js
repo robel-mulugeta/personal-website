@@ -1,14 +1,9 @@
 (function () {
   'use strict';
 
-  // Paired images that must stay adjacent
-  var kokebPair = [
+  var allImages = [
     '/collage/Kokeb menu page 1.png',
-    '/collage/Kokeb menu page 2.png'
-  ];
-
-  // All other images
-  var soloImages = [
+    '/collage/Kokeb menu page 2.png',
     '/collage/eh3iwyov6lthyqxs6i9b.jpg',
     '/collage/4500.jpg.webp',
     '/collage/Yankees_Mariners_Baseball.jpg',
@@ -59,19 +54,38 @@
     '/collage/19825fedwaySeahawk.jpg.jpg',
     '/collage/2004_Oprah-Winfrey.webp',
     '/collage/soyinka.jpg',
-    '/collage/usain.jpg'
+    '/collage/usain.jpg',
+    '/collage/detroit street art.jpeg'
   ];
 
-  // Custom object-position for specific images
   var imagePositions = {
     '/collage/images.jpg': 'left center',
     '/collage/IMG_0031.JPG': 'center 20%'
   };
 
-  // Images that should show fully (object-fit: contain) instead of cropping
-  var containImages = [
-    '/collage/Prophet by kahlil g.jpg'
+  // Possible sizes for floating photos — varied like Public Records
+  var sizes = [
+    { w: 180, h: 240 },
+    { w: 260, h: 180 },
+    { w: 220, h: 300 },
+    { w: 300, h: 220 },
+    { w: 160, h: 200 },
+    { w: 280, h: 200 },
+    { w: 200, h: 280 },
+    { w: 340, h: 240 }
   ];
+
+  var canvas = document.getElementById('collage-canvas');
+  var triggered = false;
+  var photos = []; // active floating photo objects
+  var pool = [];   // shuffled queue of image srcs
+  var poolIndex = 0;
+  var MAX_PHOTOS = 7;
+  var SPAWN_INTERVAL = 2400;
+
+  // Mouse influence on drift direction
+  var mouseX = 0.5; // normalized 0-1, 0.5 = center
+  var mouseY = 0.5;
 
   function shuffle(arr) {
     var a = arr.slice();
@@ -84,191 +98,232 @@
     return a;
   }
 
-  var canvas = document.getElementById('collage-canvas');
-  var heading = document.querySelector('.collage-heading');
-  var triggered = false;
-
-  function getNavRect() {
-    var nav = document.querySelector('.nav');
-    if (!nav) return null;
-    var rect = nav.getBoundingClientRect();
-    var padding = 30;
-    return {
-      left: rect.left - padding,
-      right: rect.right + padding,
-      top: rect.top - padding,
-      bottom: rect.bottom + padding
-    };
+  function refillPool() {
+    pool = shuffle(allImages);
+    poolIndex = 0;
   }
 
-  function getHeadingRect() {
-    if (!heading) return null;
-    var rect = heading.getBoundingClientRect();
-    var padding = 20;
-    return {
-      left: rect.left - padding,
-      right: rect.right + padding,
-      top: rect.top - padding,
-      bottom: rect.bottom + padding
-    };
+  function nextImage() {
+    if (poolIndex >= pool.length) refillPool();
+    return pool[poolIndex++];
   }
 
-  function overlapsZone(x, y, w, h, zone) {
-    if (!zone) return false;
-    return x + w > zone.left && x < zone.right &&
-           y + h > zone.top && y < zone.bottom;
+  function pickSize() {
+    return sizes[Math.floor(Math.random() * sizes.length)];
   }
 
-  function getRandomRotation() {
-    return (Math.random() * 12 - 6).toFixed(1);
-  }
-
-  function spawnAllImages() {
-    if (triggered) return;
-    triggered = true;
-
-    // Shuffle solo images, then insert the Kokeb pair at a random position together
-    var shuffledSolo = shuffle(soloImages);
-    var kokebIndex = Math.floor(Math.random() * (shuffledSolo.length + 1));
-    var finalList = [];
-    for (var s = 0; s < shuffledSolo.length; s++) {
-      if (s === kokebIndex) {
-        finalList.push(kokebPair[0]);
-        finalList.push(kokebPair[1]);
-      }
-      finalList.push(shuffledSolo[s]);
-    }
-    if (kokebIndex >= shuffledSolo.length) {
-      finalList.push(kokebPair[0]);
-      finalList.push(kokebPair[1]);
-    }
-
-    var count = finalList.length;
+  function pickEdgeSpawn(w, h) {
+    // Spawn from a random edge, biased by cursor position
+    // Cursor right => photos come from left, etc.
     var vw = window.innerWidth;
     var vh = window.innerHeight;
-    var navZone = getNavRect();
-    var headingZone = getHeadingRect();
+    var edge = Math.random();
+    var x, y;
 
-    // Calculate grid
-    var cols = Math.ceil(Math.sqrt(count * (vw / vh)));
-    var rows = Math.ceil(count / cols);
-    var cellW = vw / cols;
-    var cellH = vh / rows;
-
-    var imgW = Math.round(cellW * 0.95);
-    var imgH = Math.round(cellH * 0.95);
-    if (imgW > 420) imgW = 420;
-    if (imgH > 380) imgH = 380;
-
-    // Build cell positions and shuffle them
-    var cells = [];
-    for (var r = 0; r < rows; r++) {
-      for (var c = 0; c < cols; c++) {
-        cells.push({ col: c, row: r });
-      }
-    }
-    cells = shuffle(cells);
-
-    // Find Kokeb indices and assign them adjacent cells
-    var kokeb1Idx = -1;
-    var kokeb2Idx = -1;
-    for (var k = 0; k < finalList.length; k++) {
-      if (finalList[k] === kokebPair[0]) kokeb1Idx = k;
-      if (finalList[k] === kokebPair[1]) kokeb2Idx = k;
+    if (edge < 0.25) {
+      // left edge
+      x = -w - 20;
+      y = Math.random() * (vh - h);
+    } else if (edge < 0.5) {
+      // right edge
+      x = vw + 20;
+      y = Math.random() * (vh - h);
+    } else if (edge < 0.75) {
+      // top edge
+      x = Math.random() * (vw - w);
+      y = -h - 20;
+    } else {
+      // bottom edge
+      x = Math.random() * (vw - w);
+      y = vh + 20;
     }
 
-    // Ensure Kokeb pages get neighboring cells
-    if (kokeb1Idx >= 0 && kokeb2Idx >= 0 && kokeb1Idx < cells.length && kokeb2Idx < cells.length) {
-      var cell1 = cells[kokeb1Idx];
-      // Find a cell adjacent to cell1 and swap it into kokeb2's slot
-      for (var a = 0; a < cells.length; a++) {
-        if (a === kokeb1Idx || a === kokeb2Idx) continue;
-        var candidate = cells[a];
-        if (Math.abs(candidate.col - cell1.col) <= 1 && Math.abs(candidate.row - cell1.row) <= 1 &&
-            !(candidate.col === cell1.col && candidate.row === cell1.row)) {
-          // Swap this adjacent cell into kokeb2's position
-          var tmp = cells[kokeb2Idx];
-          cells[kokeb2Idx] = cells[a];
-          cells[a] = tmp;
-          break;
+    return { x: x, y: y };
+  }
+
+  function getDrift() {
+    // Direction influenced by cursor: opposite of cursor position
+    // mouseX=0.8 (right) => drift left (negative x)
+    // mouseY=0.2 (top) => drift down (positive y)
+    var dx = (0.5 - mouseX) * 2.0; // range -1 to 1
+    var dy = (0.5 - mouseY) * 2.0;
+
+    // Add some randomness
+    dx += (Math.random() - 0.5) * 0.6;
+    dy += (Math.random() - 0.5) * 0.6;
+
+    // Normalize to a consistent speed
+    var mag = Math.sqrt(dx * dx + dy * dy);
+    if (mag < 0.1) {
+      dx = (Math.random() - 0.5) * 2;
+      dy = (Math.random() - 0.5) * 2;
+      mag = Math.sqrt(dx * dx + dy * dy);
+    }
+    var speed = 0.4 + Math.random() * 0.3;
+    dx = (dx / mag) * speed;
+    dy = (dy / mag) * speed;
+
+    return { dx: dx, dy: dy };
+  }
+
+  function spawnPhoto() {
+    var src = nextImage();
+    var size = pickSize();
+    var spawn = pickEdgeSpawn(size.w, size.h);
+    var drift = getDrift();
+    var rotation = (Math.random() * 10 - 5).toFixed(1);
+
+    var el = document.createElement('div');
+    el.className = 'collage-item';
+    el.style.width = size.w + 'px';
+    el.style.height = size.h + 'px';
+    el.style.left = spawn.x + 'px';
+    el.style.top = spawn.y + 'px';
+    el.style.setProperty('--rotation', 'rotate(' + rotation + 'deg)');
+
+    var img = document.createElement('img');
+    img.src = src;
+    img.alt = '';
+    if (imagePositions[src]) {
+      img.style.objectPosition = imagePositions[src];
+    }
+
+    el.appendChild(img);
+    canvas.appendChild(el);
+
+    var photo = {
+      el: el,
+      x: spawn.x,
+      y: spawn.y,
+      w: size.w,
+      h: size.h,
+      dx: drift.dx,
+      dy: drift.dy,
+      opacity: 0,
+      phase: 'entering', // entering, visible, exiting
+      life: 0
+    };
+
+    photos.push(photo);
+    return photo;
+  }
+
+  function isOffScreen(p) {
+    var vw = window.innerWidth;
+    var vh = window.innerHeight;
+    var margin = 80;
+    return p.x < -p.w - margin || p.x > vw + margin ||
+           p.y < -p.h - margin || p.y > vh + margin;
+  }
+
+  function updatePhotos() {
+    var vw = window.innerWidth;
+    var vh = window.innerHeight;
+    var toRemove = [];
+
+    for (var i = 0; i < photos.length; i++) {
+      var p = photos[i];
+      p.life++;
+
+      // Gently blend drift toward current cursor-driven direction
+      var target = getDrift();
+      p.dx += (target.dx - p.dx) * 0.003;
+      p.dy += (target.dy - p.dy) * 0.003;
+
+      p.x += p.dx;
+      p.y += p.dy;
+
+      // Phase management
+      if (p.phase === 'entering') {
+        p.opacity = Math.min(1, p.opacity + 0.015);
+        // Once fully visible and inside viewport, switch to visible
+        var insideX = p.x > -p.w * 0.5 && p.x < vw - p.w * 0.5;
+        var insideY = p.y > -p.h * 0.5 && p.y < vh - p.h * 0.5;
+        if (p.opacity >= 1 && insideX && insideY) {
+          p.phase = 'visible';
+        }
+      } else if (p.phase === 'visible') {
+        // Eventually start fading when heading off screen
+        if (isOffScreen(p)) {
+          p.phase = 'exiting';
+        }
+      } else if (p.phase === 'exiting') {
+        p.opacity = Math.max(0, p.opacity - 0.02);
+        if (p.opacity <= 0) {
+          toRemove.push(i);
         }
       }
+
+      // Force remove if way off screen
+      if (p.life > 100 && isOffScreen(p)) {
+        p.phase = 'exiting';
+        p.opacity = Math.max(0, p.opacity - 0.04);
+        if (p.opacity <= 0) {
+          if (toRemove.indexOf(i) === -1) toRemove.push(i);
+        }
+      }
+
+      p.el.style.left = p.x + 'px';
+      p.el.style.top = p.y + 'px';
+      p.el.style.opacity = p.opacity;
     }
 
-    for (var i = 0; i < count; i++) {
-      (function (index) {
-        var delay = 50 + Math.random() * 50;
-
-        setTimeout(function () {
-          var cell = cells[index];
-          var rotation = getRandomRotation();
-          var src = finalList[index];
-
-          var sizeVariation = 0.8 + Math.random() * 0.4;
-          var w = Math.round(imgW * sizeVariation);
-          var h = Math.round(imgH * sizeVariation);
-
-          var cellX = cell.col * cellW;
-          var cellY = cell.row * cellH;
-          var maxOffsetX = Math.max(0, cellW - w);
-          var maxOffsetY = Math.max(0, cellH - h);
-          var x = Math.round(cellX + Math.random() * maxOffsetX);
-          var y = Math.round(cellY + Math.random() * maxOffsetY);
-
-          // If overlapping nav or heading, try random positions anywhere
-          var attempts = 0;
-          while (attempts < 40 && (
-            overlapsZone(x, y, w, h, navZone) ||
-            overlapsZone(x, y, w, h, headingZone)
-          )) {
-            x = Math.floor(Math.random() * (vw - w));
-            y = Math.floor(Math.random() * (vh - h));
-            attempts++;
-          }
-
-          if (x + w > vw) x = vw - w;
-          if (y + h > vh) y = vh - h;
-          if (x < 0) x = 0;
-          if (y < 0) y = 0;
-
-          var el = document.createElement('div');
-          el.className = 'collage-item';
-          el.style.width = w + 'px';
-          el.style.height = h + 'px';
-          el.style.left = x + 'px';
-          el.style.top = y + 'px';
-          el.style.zIndex = index + 1;
-          el.style.setProperty('--rotation', 'rotate(' + rotation + 'deg)');
-          el.style.animationDelay = (index * 0.06) + 's';
-
-          var img = document.createElement('img');
-          img.src = src;
-          img.alt = '';
-
-          // Apply custom object-position if specified
-          if (imagePositions[src]) {
-            img.style.objectPosition = imagePositions[src];
-          }
-
-          // Zoom in on book covers so they fill their square without white space
-          if (containImages.indexOf(src) !== -1) {
-            img.style.objectFit = 'cover';
-          }
-
-          el.appendChild(img);
-          canvas.appendChild(el);
-        }, index * delay);
-      })(i);
+    // Remove dead photos (iterate backwards)
+    for (var r = toRemove.length - 1; r >= 0; r--) {
+      var idx = toRemove[r];
+      photos[idx].el.remove();
+      photos.splice(idx, 1);
     }
+
+    requestAnimationFrame(updatePhotos);
+  }
+
+  function startSpawning() {
+    // Initial batch: stagger a few photos
+    var initialCount = 5 + Math.floor(Math.random() * 3); // 5-7
+    for (var i = 0; i < initialCount; i++) {
+      (function (delay) {
+        setTimeout(spawnPhoto, delay);
+      })(i * 400);
+    }
+
+    // Continuously spawn new photos
+    setInterval(function () {
+      if (photos.length < MAX_PHOTOS) {
+        spawnPhoto();
+      }
+    }, SPAWN_INTERVAL);
   }
 
   function onFirstInteraction() {
-    spawnAllImages();
-    document.removeEventListener('mousemove', onFirstInteraction);
-    document.removeEventListener('touchstart', onFirstInteraction);
+    if (triggered) return;
+    triggered = true;
+
+    refillPool();
+    startSpawning();
+    requestAnimationFrame(updatePhotos);
+
+    document.removeEventListener('mousemove', onFirstMove);
+    document.removeEventListener('touchstart', onFirstTouch);
   }
 
-  document.addEventListener('mousemove', onFirstInteraction);
-  document.addEventListener('touchstart', onFirstInteraction, { passive: true });
+  function onFirstMove(e) {
+    mouseX = e.clientX / window.innerWidth;
+    mouseY = e.clientY / window.innerHeight;
+    onFirstInteraction();
+  }
+
+  function onFirstTouch() {
+    onFirstInteraction();
+  }
+
+  // Track mouse continuously for drift direction
+  document.addEventListener('mousemove', function (e) {
+    mouseX = e.clientX / window.innerWidth;
+    mouseY = e.clientY / window.innerHeight;
+  });
+
+  document.addEventListener('mousemove', onFirstMove);
+  document.addEventListener('touchstart', onFirstTouch, { passive: true });
 
 })();
