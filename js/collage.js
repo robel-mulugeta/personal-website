@@ -45,7 +45,6 @@
     '/collage/kryptonate.webp',
     '/collage/wales bonner.jpg',
     '/collage/download.webp',
-    '/collage/eddie murphy.jpg',
     '/collage/magnolia trees uw.jpeg',
     '/collage/topboy sully.webp',
     '/collage/MJ personally.jpg',
