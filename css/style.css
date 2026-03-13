@@ -27,7 +27,11 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-*, *::before, *::after {
+*, *::before, *::after,
+*:hover, *:focus, *:active,
+a, a:hover, a:focus,
+button, button:hover,
+[role="button"], [role="button"]:hover {
   cursor: none !important;
 }
 
