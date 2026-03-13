@@ -26,8 +26,8 @@
 
   // Smooth follow with lerp
   function tick() {
-    cx += (mx - cx) * 0.15;
-    cy += (my - cy) * 0.15;
+    cx += (mx - cx) * 0.35;
+    cy += (my - cy) * 0.35;
     dot.style.transform = 'translate(' + cx + 'px, ' + cy + 'px)';
     requestAnimationFrame(tick);
   }
