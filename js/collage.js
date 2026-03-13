@@ -53,7 +53,8 @@
     '/collage/2004_Oprah-Winfrey.webp',
     '/collage/soyinka.jpg',
     '/collage/usain.jpg',
-    '/collage/detroit street art.jpeg'
+    '/collage/detroit street art.jpeg',
+    '/collage/IMG_0084.PNG'
   ];
 
   // Width options for floating photos — height determined by natural aspect ratio
