@@ -54,7 +54,8 @@
     '/collage/soyinka.jpg',
     '/collage/usain.jpg',
     '/collage/detroit street art.jpeg',
-    '/collage/IMG_0084.PNG'
+    '/collage/IMG_0084.PNG',
+    '/collage/corner-art.png'
   ];
 
   // Width options for floating photos — height determined by natural aspect ratio
