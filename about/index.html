@@ -29,16 +29,9 @@
 
   </main>
 
-  <div class="about__photo" id="polaroid-flip">
-    <div class="polaroid-container">
-      <div class="polaroid-flipper">
-        <div class="polaroid-front polaroid">
-          <img src="../images/IMG_8715.jpg" alt="Childhood photograph">
-        </div>
-        <div class="polaroid-back">
-          <p class="polaroid-back-text">Brick by Brick</p>
-        </div>
-      </div>
+  <div class="about__photo">
+    <div class="polaroid">
+      <img src="../images/IMG_8715.jpg" alt="Childhood photograph">
     </div>
   </div>
 
@@ -48,10 +41,6 @@
 
   <script src="../js/cursor.js"></script>
   <script>
-    document.getElementById('polaroid-flip').addEventListener('click', function () {
-      this.querySelector('.polaroid-flipper').classList.toggle('flipped');
-    });
-
     (function () {
       var el = document.getElementById('typewriter');
       var cursor = document.createElement('span');
