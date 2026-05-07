@@ -235,7 +235,7 @@ img {
 
 .about__photo .polaroid-container {
   perspective: 800px;
-  flex: 0 1 220px;
+  flex: 0 1 150px;
 }
 
 .about__photo .polaroid-flipper {
@@ -770,7 +770,7 @@ img {
   }
 
   .about__photo .polaroid-container {
-    flex: 0 1 180px;
+    flex: 0 1 130px;
   }
 
   .sonics-counter__title {
