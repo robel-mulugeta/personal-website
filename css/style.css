@@ -773,6 +773,10 @@ img {
     flex: 0 1 130px;
   }
 
+  .about__signature {
+    right: 1.2rem;
+  }
+
   .sonics-counter__title {
     font-size: 0.65rem;
   }
