@@ -293,8 +293,8 @@ img {
 .about__signature {
   position: fixed;
   bottom: 3rem;
-  left: 3rem;
-  text-align: left;
+  right: 3rem;
+  text-align: right;
   font-size: 1rem;
   opacity: 0.8;
   letter-spacing: 0.05em;
