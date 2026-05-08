@@ -40,8 +40,6 @@
       art: null },
     { title: 'Sometimes I Might Be Introvert', artist: 'Little Simz',
       art: null },
-    { title: "Mama's Gun", artist: 'Erykah Badu',
-      art: null },
     { title: 'Live', artist: 'Donny Hathaway',
       art: 'https://is1-ssl.mzstatic.com/image/thumb/Music/v4/56/27/d8/5627d82f-b54c-60d6-5140-ed049ef44ada/075678027222.jpg/600x600bb.jpg' },
     { title: 'Ramona Park Broke My Heart', artist: 'Vince Staples',
