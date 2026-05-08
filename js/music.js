@@ -72,8 +72,6 @@
       art: 'https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/f4/b4/c4/f4b4c458-e52c-859b-fdef-2600dd4fe768/196589380630.jpg/600x600bb.jpg' },
     { title: 'Ego Death', artist: 'The Internet',
       art: 'https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/84/ac/4c/84ac4c29-45f4-9eb4-fd16-1e507eb6dc5e/886445301649.jpg/600x600bb.jpg' },
-    { title: 'Shea Butter Baby', artist: 'Ari Lennox',
-      art: 'https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/d6/c5/e2/d6c5e298-89a3-d07c-45f6-6d075f821d37/19UMGIM38109.rgb.jpg/600x600bb.jpg' },
     { title: 'Reality Show', artist: 'Jazmine Sullivan',
       art: 'https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/5a/3b/02/5a3b02ac-ea31-9df6-34f7-0186b941846d/886444622172.jpg/600x600bb.jpg' },
     { title: 'Channel Orange', artist: 'Frank Ocean',
