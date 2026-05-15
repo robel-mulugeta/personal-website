@@ -227,10 +227,12 @@ img {
 
 .about__photo {
   position: fixed;
-  top: 55%;
+  top: 45%;
   left: 3rem;
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
 }
 
 .about__photo .polaroid-container {
@@ -286,16 +288,15 @@ img {
 }
 
 .about__photo .polaroid {
+  flex: 0 0 auto;
+  width: 120px;
   padding: 6px 6px 24px 6px;
   position: relative;
 }
 
 .about__signature {
-  position: fixed;
-  bottom: 3rem;
-  right: 3rem;
-  text-align: right;
-  font-size: 1rem;
+  text-align: left;
+  font-size: 0.95rem;
   opacity: 0.8;
   letter-spacing: 0.05em;
   line-height: 1.6;
@@ -769,12 +770,8 @@ img {
     padding: 4rem 1.2rem 2rem;
   }
 
-  .about__photo .polaroid-container {
-    flex: 0 1 105px;
-  }
-
-  .about__signature {
-    right: 1.2rem;
+  .about__photo .polaroid {
+    width: 105px;
   }
 
   .sonics-counter__title {
