@@ -289,7 +289,7 @@ img {
 
 .about__photo .polaroid {
   flex: 0 0 auto;
-  width: 120px;
+  width: 240px;
   padding: 6px 6px 24px 6px;
   position: relative;
 }
@@ -771,7 +771,7 @@ img {
   }
 
   .about__photo .polaroid {
-    width: 105px;
+    width: 210px;
   }
 
   .sonics-counter__title {
