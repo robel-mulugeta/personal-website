@@ -705,7 +705,7 @@ img {
   }
 
   .about {
-    padding: 4.5rem 1.5rem 2rem;
+    padding: 5.5rem 1.5rem 2rem;
     max-width: 100%;
     min-height: auto;
   }
@@ -756,7 +756,7 @@ img {
 
   .misc-page {
     min-height: auto;
-    padding-top: 3.5rem;
+    padding-top: 5.5rem;
     padding-left: 1.5rem;
   }
 
@@ -768,6 +768,8 @@ img {
     max-width: 120px;
   }
 
+  .about__text,
+  .about__principles,
   .music-heading p,
   .collage-heading p,
   .misc-heading p {
@@ -817,7 +819,7 @@ img {
   }
 
   .about {
-    padding: 4rem 1.2rem 2rem;
+    padding: 5rem 1.2rem 2rem;
   }
 
   .about__photo .polaroid {
@@ -872,7 +874,7 @@ img {
   }
 
   .misc-page {
-    padding-top: 3rem;
+    padding-top: 5rem;
     padding-left: 1.2rem;
   }
 
@@ -884,6 +886,8 @@ img {
     max-width: 100px;
   }
 
+  .about__text,
+  .about__principles,
   .music-heading p,
   .collage-heading p,
   .misc-heading p {
