@@ -48,7 +48,6 @@
     '/collage/magnolia trees uw.jpeg',
     '/collage/topboy sully.webp',
     '/collage/MJ personally.jpg',
-    '/collage/urkel.webp',
     '/collage/19825fedwaySeahawk.jpg.jpg',
     '/collage/2004_Oprah-Winfrey.webp',
     '/collage/soyinka.jpg',
