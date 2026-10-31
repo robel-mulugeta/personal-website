@@ -230,10 +230,6 @@ img {
   font-style: italic;
 }
 
-.about__quote .about__quote-author {
-  font-style: normal;
-}
-
 .about__photo {
   position: fixed;
   top: 45%;
