@@ -225,6 +225,11 @@ img {
   margin-bottom: 0;
 }
 
+.about__quote {
+  margin: 0 0 1.5rem;
+  font-style: italic;
+}
+
 .about__photo {
   position: fixed;
   top: 45%;
