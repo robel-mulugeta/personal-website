@@ -225,11 +225,6 @@ img {
   margin-bottom: 0;
 }
 
-.about__quote {
-  margin: 0 0 1.5rem;
-  font-style: italic;
-}
-
 .about__photo {
   position: fixed;
   top: 45%;
@@ -590,6 +585,18 @@ img {
   line-height: 1.9;
   color: var(--text);
   opacity: 0.8;
+}
+
+.misc-quote {
+  margin: 2rem 0 0;
+}
+
+.misc-quote p {
+  font-style: italic;
+}
+
+.misc-quote .misc-quote__author {
+  font-style: normal;
 }
 
 .misc-video {
