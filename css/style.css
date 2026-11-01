@@ -784,6 +784,13 @@ img {
     transform: none;
     margin: 3rem 0 0 1.5rem;
     text-align: left;
+    /* Six typed lines at line-height 1.9; keeps the photo below from shifting while the list types out. */
+    min-height: 11.4em;
+  }
+
+  .about__photo {
+    position: static;
+    margin: 2.5rem 0 3rem 3rem;
   }
 
 
