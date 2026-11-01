@@ -103,6 +103,26 @@
         }
       }
 
+      var LAST_SEEN_KEY = 'about-typewriter-last-seen';
+      var SKIP_WINDOW_MS = 30 * 60 * 1000;
+      var seenRecently = false;
+
+      try {
+        var lastSeen = parseInt(localStorage.getItem(LAST_SEEN_KEY), 10);
+        seenRecently = lastSeen > 0 && Date.now() - lastSeen < SKIP_WINDOW_MS;
+        localStorage.setItem(LAST_SEEN_KEY, String(Date.now()));
+      } catch (e) {}
+
+      if (seenRecently) {
+        actions.forEach(function (action) {
+          if (action.type === 'char') content += action.char;
+          else if (action.type === 'delete') content = content.slice(0, -1);
+        });
+        el.textContent = content;
+        el.appendChild(cursor);
+        return;
+      }
+
       // Start after a brief delay
       setTimeout(tick, 800);
     })();
