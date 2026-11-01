@@ -615,8 +615,20 @@ img {
   margin-bottom: 2rem;
 }
 
+.quote-section {
+  margin-bottom: 3.5rem;
+}
+
+.quote-section__title {
+  margin-bottom: 1.2rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
 .quote {
-  margin: 0 0 2.5rem;
+  margin: 0 0 1.8rem;
 }
 
 .quote p {
