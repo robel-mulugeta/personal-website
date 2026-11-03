@@ -592,7 +592,9 @@ img {
 }
 
 .misc-link a {
-  color: #00838f;
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .quotebook-page {
